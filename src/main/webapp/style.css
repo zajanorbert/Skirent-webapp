@@ -35,6 +35,10 @@ body{
     display: block;
 }
 
+.topnav a:hover{
+    background-color: #00d8ff;
+}
+
 .dropdown {
     float: left;
     overflow: hidden;
