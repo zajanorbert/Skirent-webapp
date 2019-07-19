@@ -1,8 +1,5 @@
 # About
 
-Repo for the _IntelliJ + Maven + Web Quickstart_ assignment.
+Repo for a skirent webapp for my PA
 
-If you plan to use this repo as a "base" for one of your project change
-`<artifactId>intellij-maven-quickstart-web</artifactId>` to reflect what you're
-working on. E.g. `<artifactId>card-game-simulator-web-project</artifactId>` or
-similar.
+Have you ever seen the Olympic slalom on the TV and you want to learn to ski like professionals? But don't you have enough money for your own equipment? Order with us, guaranteed to meet any winter sports needs!
