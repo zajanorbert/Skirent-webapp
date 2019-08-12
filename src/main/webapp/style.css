@@ -7,6 +7,21 @@ body{
     font-family: "Lato", sans-serif;
 }
 
+input[type=text],input[type=password]{
+    width: 60%;
+    font-size: 18px;
+}
+
+.button {
+    background-color: #00d8ff;
+    color: white;
+    padding: 15px 40px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 21%;
+    cursor: pointer;
+}
+
 .topnav {
     overflow: hidden;
     background-color: #333;
@@ -97,7 +112,9 @@ body{
 #shoppingCart{
     font-size:40px;
     background: inherit;
-    border: none
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 
 .sidenav {
@@ -140,6 +157,10 @@ body{
 }
 
 .hidden{
+    display: none;
+}
+
+#logoutButton{
     display: none;
 }
 

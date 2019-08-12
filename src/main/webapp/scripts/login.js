@@ -4,6 +4,7 @@ function onLoginResponse() {
         setAuthorization(user);
         if (hasAuthorization()) {
             showContents(['mainPage']);
+            addLogout(user);
             //onLoadProfile(getAuthorization());
 
         }
@@ -30,13 +31,6 @@ function onLoginButtonClicked(){
     xhr.send(params);
 }
 
-function onSignUpResponse() {
-    if (this.status === OK) {
-        showContents(['login-content', 'welcome-content']);
-    } else if (this.status === BAD_REQUEST) {
-        alert("You've provided invalid data");
-    }
-}
 
 function onSubmitButtonClicked() {
     const signUpFormEl = document.forms['signUpForm'];
@@ -69,8 +63,8 @@ function onSubmitButtonClicked() {
     params.append('IDCardNumber', IDCardNumber);
 
     const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onSignUpResponse);
-    xhr.open('POST', 'signup');
+    xhr.addEventListener('load', onLoginResponse);
+    xhr.open('POST', 'signUp');
     xhr.send(params);
 
 }

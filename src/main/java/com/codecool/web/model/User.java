@@ -1,30 +1,38 @@
 package com.codecool.web.model;
 
-public class Buyers {
+public class User {
     private String IDCardNumber;
     private String forename;
     private String lastName;
     private String email;
     private String password;
+    private String country;
     private String city;
-    private String postalCode;
+    private String zipCode;
     private String address;
+    private UserType usertype;
 
-    public Buyers(String IDCardNumber, String forename, String lastName, String email, String password, String city, String postalCode, String address) {
+    public User(String IDCardNumber, String forename, String lastName, String email, String password, String country, String city, String zipCode, String address,UserType usertype) {
         this.IDCardNumber = IDCardNumber;
         this.forename = forename;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.country = country;
         this.city = city;
-        this.postalCode = postalCode;
+        this.zipCode = zipCode;
         this.address = address;
+        this.usertype = usertype;
     }
 
-    public Buyers(String IDCardNumber, String email) {
+    public User(String IDCardNumber, String email) {
         this.IDCardNumber = IDCardNumber;
         this.email = email;
         this.password = null;
+    }
+
+    public String getName(){
+        return this.forename+" "+this.lastName;
     }
 
     public String getIDCardNumber() {
@@ -51,11 +59,19 @@ public class Buyers {
         return city;
     }
 
-    public String getPostalCode() {
-        return postalCode;
+    public String getZipCode() {
+        return zipCode;
     }
 
     public String getAddress() {
         return address;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public UserType getUsertype() {
+        return usertype;
     }
 }

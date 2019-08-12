@@ -8,6 +8,9 @@ let mainPageDivEl;
 let profileContentDivEl;
 let loginContentDivEl;
 let signUpContentDivEl;
+let signInButtonEl;
+let logoutButtonEl;
+
 
 function hasAuthorization() {
     return localStorage.getItem('user') !== null;
@@ -102,11 +105,17 @@ function onSignInButtonClicked() {
     showContents(['mainPage', 'loginContent']);
 }
 
+function addLogout(user) {
+    signInButtonEl.textContent = user.name;
+    logoutButtonEl.style.display= "block";
+}
+
 function onLoad() {
     mainPageDivEl = document.getElementById('mainPage');
     profileContentDivEl = document.getElementById('profileContent');
     loginContentDivEl = document.getElementById('loginContent');
     signUpContentDivEl = document.getElementById('signUpContent');
+    logoutButtonEl = document.getElementById('logoutButton');
 
     const closeLoginButtonEl = document.getElementById('closeLoginButton');
     closeLoginButtonEl.addEventListener('click', onCloseButtonClicked);
@@ -117,7 +126,7 @@ function onLoad() {
     const toSignUpButtonEl = document.getElementById('toSignUpButton');
     toSignUpButtonEl.addEventListener('click', onToSignUpButtonClicked);
 
-    const signInButtonEl = document.getElementById('signInButton');
+    signInButtonEl = document.getElementById('signInButton');
     signInButtonEl.addEventListener('click', onSignInButtonClicked);
 
     const loginButtonEl = document.getElementById('loginButton');

@@ -52,14 +52,14 @@
     </form>
 </div>
 <div id="loginContent" class="hidden content modal">
-    <form class="modal-content animate" id="loginForm" action="/action_page.php">
+    <form class="modal-content animate" id="loginForm" action="/action_page.php" onsubmit="return false;">
         <div class="imgcontainer"><span style="width: 2%; float: right" id="closeLoginButton" title="Close PopUp"
                                         class="close">&times;</span>
-            <input type="text" name="email" placeholder="Email" required>
-            <input type="password" name="psw" placeholder="Password" required>
-            <button id="loginButton">Login</button>
+            <p><input type="text" name="email" placeholder="Email" required></p>
+            <p><input type="password" name="psw" placeholder="Password" required></p>
+            <button id="loginButton" class="button">Login</button>
             <p>Don't have an account, but u want? Sign Up for us!</p>
-            <button id="toSignUpButton">SignUp</button>
+            <button id="toSignUpButton" class="button">SignUp</button>
         </div>
     </form>
 </div>
