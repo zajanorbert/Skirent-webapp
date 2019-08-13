@@ -106,8 +106,17 @@ function onSignInButtonClicked() {
 }
 
 function addLogout(user) {
-    signInButtonEl.textContent = user.name;
+    signInButtonEl.textContent = user.forename;
+    signInButtonEl.removeEventListener('click', onSignInButtonClicked);
+    signInButtonEl.removeAttribute('href');
     logoutButtonEl.style.display= "block";
+}
+
+function logout() {
+    signInButtonEl.textContent ="sign in/sign up";
+    signInButtonEl.addEventListener('click', onSignInButtonClicked);
+    signInButtonEl.setAttribute('href', 'javascript:void(0)');
+    logoutButtonEl.style.display= "none";
 }
 
 function onLoad() {
@@ -131,6 +140,9 @@ function onLoad() {
 
     const loginButtonEl = document.getElementById('loginButton');
     loginButtonEl.addEventListener('click', onLoginButtonClicked);
+
+
+    logoutButtonEl.addEventListener('click', onLogoutButtonClicked);
 }
 
 document.addEventListener('DOMContentLoaded', onLoad);

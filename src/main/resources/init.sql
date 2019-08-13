@@ -42,7 +42,7 @@ create table arguments(
 
 CREATE TABLE users
 (
-    ID_card_number VARCHAR(10) PRIMARY KEY NOT NULL,
+    ID_card_number VARCHAR(30) PRIMARY KEY NOT NULL,
     forename VARCHAR(30) NOT NULL,
     lastName VARCHAR(30) NOT NULL,
     email VARCHAR(30) NOT NULL,

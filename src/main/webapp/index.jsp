@@ -22,7 +22,7 @@
         <a style="padding: 0">
             <button id="shoppingCart"><i class="fa fa-shopping-cart"></i></button>
         </a>
-        <a id="logoutButton" class="active">logout</a>
+        <a id="logoutButton" class="active" href="javascript:void(0)">logout</a>
     </div>
     <div id="sideNav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -32,22 +32,23 @@
     </div>
 </div>
 <div id="signUpContent" class="hidden content modal">
-    <form class="modal-content animate" id="signUpForm" action="/action_page.php">
+    <form class="modal-content animate" id="signUpForm" action="/action_page.php" onsubmit="return false;">
         <div class="imgcontainer"><span style="width: 2%; float: right" id="closeSignUpButton" title="Close PopUp"
                                         class="close">&times;</span>
-            <input type="text" name="IDCardNumber" placeholder="ID card number">
+            <input type="text" name="IDCardNumber" placeholder="ID card number" maxlength="10">
             <input type="text" name="forename" placeholder="Forename" required>
             <input type="text" name="lastName" placeholder="LastName" required>
             <input type="text" name="email" placeholder="Email address" required>
             <input type="password" placeholder="Password" name="psw"
                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+            <input type="text" name="country" placeholder="Country" required>
             <input type="text" name="city" placeholder="City" required>
-            <input type="text" name="postalCode" placeholder="Postal code" required>
+            <input type="text" name="zipCode" placeholder="Zip code" required>
             <input type="text" name="address" placeholder="Address" title="Name,nature,number" required>
-            <button id="signUpButton">SignUp</button>
+            <button id="signUpButton" class="button">SignUp</button>
             <p>If u forgot, u already have an account, click and get back to login!</p>
-            <button id="backToLoginButton">Back To Login</button>
+            <button id="backToLoginButton" class="button">Back To Login</button>
         </div>
     </form>
 </div>
