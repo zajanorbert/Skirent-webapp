@@ -26,10 +26,11 @@
     </div>
     <div id="sideNav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a>Ski</a>
-        <a>Snowboard</a>
-        <a>Sled</a>
+        <a id="ski">Ski</a>
+        <a id="snowboard">Snowboard</a>
+        <a id="sled">Sled</a>
     </div>
+
 </div>
 <div id="signUpContent" class="hidden content modal">
     <form class="modal-content animate" id="signUpForm" action="/action_page.php" onsubmit="return false;">
@@ -46,6 +47,7 @@
             <input type="text" name="city" placeholder="City" required>
             <input type="text" name="zipCode" placeholder="Zip code" required>
             <input type="text" name="address" placeholder="Address" title="Name,nature,number" required>
+            <br>
             <button id="signUpButton" class="button">SignUp</button>
             <p>If u forgot, u already have an account, click and get back to login!</p>
             <button id="backToLoginButton" class="button">Back To Login</button>

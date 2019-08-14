@@ -1,6 +1,6 @@
 package com.codecool.web.model;
 
-public class Items extends AbstractModel {
+public class Item extends AbstractModel {
 
     private String brand;
     private String NR;
@@ -13,7 +13,7 @@ public class Items extends AbstractModel {
     private int flexIndex;
 
 
-    public Items(int id, String brand, String NR, Element element, String size, int amount, String pic, int price) {
+    public Item(int id, String brand, String NR, Element element, String size, int amount, String pic, int price) {
         super(id);
         this.brand = brand;
         this.NR = NR;
@@ -24,7 +24,7 @@ public class Items extends AbstractModel {
         this.price = price;
     }
 
-    public Items(int id, String brand, String NR, Element element, int amount, String pic, int length, int price, int flexIndex) {
+    public Item(int id, String brand, String NR, Element element, int amount, String pic, int length, int price, int flexIndex) {
         super(id);
         this.brand = brand;
         this.NR = NR;
