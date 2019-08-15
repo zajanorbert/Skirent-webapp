@@ -9,17 +9,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <c:url value="/scripts/index.js" var="indexScriptUrl"/>
     <c:url value="/scripts/login.js" var="loginScriptUrl"/>
+    <c:url value="/scripts/products.js" var="productsScriptUrl"/>
     <script src="${indexScriptUrl}"></script>
     <script src="${loginScriptUrl}"></script>
+    <script src="${productsScriptUrl}"></script>
 </head>
 <body>
 <div id="mainPage" class="content">
     <div id="topNav" class="topnav">
         <a href="javascript:void(0)" onclick="openNav()">sports</a>
-        <a id="signInButton" href="javascript:void(0)">sign in/sign up</a>
-        <a>sales</a>
-        <a>news</a>
-        <a style="padding: 0">
+        <%--<a id="signInButton" href="javascript:void(0)">sign in/sign up</a>--%>
+        <div class="dropdown">
+            <button id="signInButton" class="dropbtn" >sign in/sign up
+            </button>
+            <div class="dropdown-content" id="myDropdown">
+                <a id="addItemButton">Add item</a>
+                <a id="seeStorageButton">See storage</a>
+                <a id="idkButton">Fuck this shit</a>
+            </div>
+        </div>
+        <a id="salesButton">sales</a>
+        <a id="newsButton">news</a>
+        <a id="cartA" style="padding: 0">
             <button id="shoppingCart"><i class="fa fa-shopping-cart"></i></button>
         </a>
         <a id="logoutButton" class="active" href="javascript:void(0)">logout</a>
@@ -30,7 +41,8 @@
         <a id="snowboard">Snowboard</a>
         <a id="sled">Sled</a>
     </div>
-
+    <div id="products" class="products">
+    </div>
 </div>
 <div id="signUpContent" class="hidden content modal">
     <form class="modal-content animate" id="signUpForm" action="/action_page.php" onsubmit="return false;">

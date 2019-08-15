@@ -66,7 +66,7 @@ input[type=text],input[type=password]{
     border: none;
     /*outline: none;*/
     color: white;
-    padding: 14px 60px;
+    padding: 14px 109px;
     width: 100%;
 
     background-color: inherit;
@@ -217,4 +217,24 @@ input[type=text],input[type=password]{
     text-align: center;
     margin: 24px 0 12px 0;
     position: relative;
+}
+
+.products{
+    width: 100%;
+    overflow: auto;
+    padding-left: 4.5%;
+    padding-top: 2%;
+}
+
+.product {
+    width: 30%;
+    background: #8c8c8c;
+    float: left;
+    border-radius: 50px;
+    text-align: center;
+}
+
+
+img{
+    width: 50%;
 }

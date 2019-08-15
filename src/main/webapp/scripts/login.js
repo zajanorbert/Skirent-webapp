@@ -73,9 +73,10 @@ function onToSignUpButtonClicked() {
 
 function onLogoutResponse() {
     if (this.status === OK) {
+        logout();
         setUnauthorized();
         clearMessages();
-        logout();
+
     } else {
         onOtherResponse(loginContentDivEl, this)
     }

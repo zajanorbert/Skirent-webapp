@@ -1,18 +1,16 @@
 package com.codecool.web.dao;
 
 import com.codecool.web.model.Element;
-import com.codecool.web.model.Item;
+import com.codecool.web.model.Product;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public interface ProductDao {
 
-    Item findByElement(Element element) throws SQLException;
+    List<Product> findByElement(Element element) throws SQLException;
 
-    List<Item> findAll() throws SQLException;
+    List<Product> findAll() throws SQLException;
 
-    void addSled(String brand, String NR, Element element, int amount, int price, String pic, String size) throws SQLException;
-
-    void addAccessory(String brand, String NR, Element element, int amount, int price, String pic, int length, int flex) throws SQLException;
+    Product addProduct(String brand, String NR, Element element, int amount, int price, String pic) throws SQLException;
 }

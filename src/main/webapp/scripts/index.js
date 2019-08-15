@@ -10,7 +10,22 @@ let loginContentDivEl;
 let signUpContentDivEl;
 let signInButtonEl;
 let logoutButtonEl;
+let productsDivEl;
 
+
+function showDropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (e) {
+    if (!e.target.matches('.dropbtn')) {
+        var myDropdown = document.getElementById("myDropdown");
+        if (myDropdown.classList.contains('show')) {
+            myDropdown.classList.remove('show');
+        }
+    }
+}
 
 function hasAuthorization() {
     return localStorage.getItem('user') !== null;
@@ -106,16 +121,28 @@ function onSignInButtonClicked() {
 }
 
 function addLogout(user) {
-    signInButtonEl.textContent = user.forename;
     signInButtonEl.removeEventListener('click', onSignInButtonClicked);
-    signInButtonEl.removeAttribute('href');
+    if(user.usertype == "ADMIN"){
+        signInButtonEl.textContent = "menu";
+        adminMenu();
+        document.getElementById("cartA").style.display= "none";
+    }else{
+        signInButtonEl.textContent = user.forename;
+        signInButtonEl.style.cursor = "default";
+
+    }
     logoutButtonEl.style.display= "block";
 }
 
 function logout() {
     signInButtonEl.textContent ="sign in/sign up";
+    const user = getAuthorization();
+    if(user.usertype == "ADMIN"){
+        signInButtonEl.removeEventListener('click', showDropdown);
+    }
+    document.getElementById("cartA").style.display= "block";
     signInButtonEl.addEventListener('click', onSignInButtonClicked);
-    signInButtonEl.setAttribute('href', 'javascript:void(0)');
+    signInButtonEl.style.cursor = "pointer";
     logoutButtonEl.style.display= "none";
 }
 
@@ -125,6 +152,7 @@ function onLoad() {
     loginContentDivEl = document.getElementById('loginContent');
     signUpContentDivEl = document.getElementById('signUpContent');
     logoutButtonEl = document.getElementById('logoutButton');
+    productsDivEl = document.getElementById('products');
 
     const closeLoginButtonEl = document.getElementById('closeLoginButton');
     closeLoginButtonEl.addEventListener('click', onCloseButtonClicked);
@@ -141,8 +169,9 @@ function onLoad() {
     const loginButtonEl = document.getElementById('loginButton');
     loginButtonEl.addEventListener('click', onLoginButtonClicked);
 
-
     logoutButtonEl.addEventListener('click', onLogoutButtonClicked);
+
+    loadProducts();
 }
 
 document.addEventListener('DOMContentLoaded', onLoad);

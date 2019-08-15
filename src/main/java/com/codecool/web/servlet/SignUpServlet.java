@@ -2,6 +2,9 @@ package com.codecool.web.servlet;
 
 import com.codecool.web.dao.UserDao;
 import com.codecool.web.dao.database.DatabaseUserDao;
+import com.codecool.web.model.Element;
+import com.codecool.web.model.User;
+import com.codecool.web.model.UserType;
 import com.codecool.web.service.UserService;
 import com.codecool.web.service.exception.ServiceException;
 import com.codecool.web.service.simple.SimpleUserService;
@@ -32,8 +35,9 @@ public class SignUpServlet extends AbstractServlet {
             String city = req.getParameter("city");
             String zipCode = req.getParameter("zipCode");
             String address = req.getParameter("address");
+            User user = new User(IDCardNumber, forename, lastName, email, password, country, city, zipCode, address, UserType.valueOf("USER"));
             userService.addUser(IDCardNumber, forename, lastName, email, password, country, city, zipCode, address);
-            sendMessage(resp, HttpServletResponse.SC_OK, "Sign Up complete");
+            sendMessage(resp, HttpServletResponse.SC_OK, user);
         } catch (ServiceException ex) {
             sendMessage(resp, HttpServletResponse.SC_BAD_REQUEST, ex.getMessage());
         } catch (SQLException ex) {
