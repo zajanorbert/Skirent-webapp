@@ -13,7 +13,11 @@ public interface ProductService {
 
     List<Product> findAll() throws SQLException, ServiceException;
 
+    List<Product> findAllSki() throws SQLException, ServiceException;
+
     List<Product> findAllSled() throws SQLException, ServiceException;
+
+    List<Product> findAllSnowboard() throws SQLException, ServiceException;
 
 /*
     void addSled(String brand, String NR, Element element, int amount, int price, String pic, String size) throws SQLException, ServiceException;

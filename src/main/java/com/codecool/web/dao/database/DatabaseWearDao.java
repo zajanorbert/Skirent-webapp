@@ -36,6 +36,16 @@ public class DatabaseWearDao extends AbstractDao implements WearDao {
     }
 
     @Override
+    public List<Product> findAllSki() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public List<Product> findAllSnowboard() throws SQLException {
+        return null;
+    }
+
+    @Override
     public List<Product> findAll() throws SQLException {
         return null;
     }

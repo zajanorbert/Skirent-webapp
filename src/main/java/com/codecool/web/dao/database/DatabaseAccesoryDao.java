@@ -38,6 +38,16 @@ public class DatabaseAccesoryDao extends AbstractDao implements AccessoryDao {
     }
 
     @Override
+    public List<Product> findAllSki() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public List<Product> findAllSnowboard() throws SQLException {
+        return null;
+    }
+
+    @Override
     public List<Product> findAll() throws SQLException {
         return null;
     }

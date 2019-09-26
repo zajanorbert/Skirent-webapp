@@ -91,6 +91,8 @@ create table orders_help
     item_id  integer references storage (item_id) not null
 );
 
+
+
 INSERT INTO users(ID_card_number, forename, lastName, email, password, country, city, zip_code, address, user_type)
 values ('099396DE', 'Norbert', 'Zaja', 'zaja.norbert@gmail.com', 'Admin12345', 'Hungary', 'Markaz', '3262',
         'Fő utca 145', 'ADMIN');
@@ -133,3 +135,17 @@ INSERT INTO storage_wear(storage_id, wear_id)
 values (5, 2);
 INSERT INTO storage_wear(storage_id, wear_id)
 values (6, 3);
+
+
+CREATE OR REPLACE FUNCTION notEmpty() RETURNS TRIGGER AS '
+    BEGIN
+        IF NEW.amount < 0 THEN
+            RAISE ''Please check the storage'';
+        END IF;
+        RETURN NULL;
+    END
+' LANGUAGE PLPGSQL;
+
+CREATE TRIGGER notMinus
+    AFTER UPDATE OR INSERT ON storage
+    FOR EACH ROW EXECUTE PROCEDURE notEmpty();

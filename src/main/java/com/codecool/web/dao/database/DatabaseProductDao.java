@@ -74,6 +74,46 @@ public class DatabaseProductDao extends AbstractDao implements ProductDao {
     }
 
     @Override
+    public List<Product> findAllSki() throws SQLException {
+        List<Product> storage = new ArrayList<>();
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sqlStatement = "select * from storage join storage_accessory on storage.item_id = storage_accessory.storage_id where element = 'SKI'";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    storage.add(fetchProduct(resultSet));
+                }
+            }
+        } catch (SQLException e) {
+            connection.rollback();
+        } finally {
+            connection.setAutoCommit(autoCommit);
+        }
+        return storage;
+    }
+
+    @Override
+    public List<Product> findAllSnowboard() throws SQLException {
+        List<Product> storage = new ArrayList<>();
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sqlStatement = "select * from storage join storage_accessory on storage.item_id = storage_accessory.storage_id where element like '%SNOWBOARD%'";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    storage.add(fetchProduct(resultSet));
+                }
+            }
+        } catch (SQLException e) {
+            connection.rollback();
+        } finally {
+            connection.setAutoCommit(autoCommit);
+        }
+        return storage;
+    }
+
+    @Override
     public Product addProduct(String brand, String NR, Element element, int amount, int price, String pic) throws SQLException{
         String sql = "INSERT INTO storage (brand, NR, element, amount, price, pic) VALUES (?,?,?,?,?,?)";
         boolean autoCommit = connection.getAutoCommit();

@@ -32,6 +32,12 @@ public class SportServlet extends AbstractServlet {
             if("sled".equals(id)){
                 productList = productService.findAllSled();
                 sendMessage(resp, HttpServletResponse.SC_OK, productList);
+            }else if("ski".equals(id)){
+                productList = productService.findAllSki();
+                sendMessage(resp, HttpServletResponse.SC_OK, productList);
+            }else if("snowboard".equals(id)){
+                productList = productService.findAllSnowboard();
+                sendMessage(resp, HttpServletResponse.SC_OK, productList);
             }
 
 

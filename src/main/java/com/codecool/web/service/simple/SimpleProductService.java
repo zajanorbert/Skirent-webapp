@@ -39,4 +39,22 @@ public class SimpleProductService implements ProductService {
             throw new ServiceException(ex.getMessage());
         }
     }
+
+    @Override
+    public List<Product> findAllSki() throws SQLException, ServiceException {
+        try {
+            return productDao.findAllSki();
+        }catch (IllegalArgumentException ex){
+            throw new ServiceException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public List<Product> findAllSnowboard() throws SQLException, ServiceException {
+        try {
+            return productDao.findAllSnowboard();
+        }catch (IllegalArgumentException ex){
+            throw new ServiceException(ex.getMessage());
+        }
+    }
 }

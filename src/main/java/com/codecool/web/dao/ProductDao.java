@@ -12,6 +12,10 @@ public interface ProductDao {
 
     List<Product> findAllSled() throws SQLException;
 
+    List<Product> findAllSki() throws SQLException;
+
+    List<Product> findAllSnowboard() throws SQLException;
+
     List<Product> findAll() throws SQLException;
 
     Product addProduct(String brand, String NR, Element element, int amount, int price, String pic) throws SQLException;
