@@ -14,19 +14,27 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/products")
-public class ProductsServlet extends AbstractServlet {
+@WebServlet("/Sport")
+public class SportServlet extends AbstractServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         resp.setContentType("text/html;charset=UTF-8");
         try(Connection connection = getConnection(req.getServletContext())){
             ProductDao productDao = new DatabaseProductDao(connection);
             ProductService productService = new SimpleProductService(productDao);
-            List<Product> productList = productService.findAll();
-            sendMessage(resp, HttpServletResponse.SC_OK, productList);
+            String id = req.getParameter("id");
+
+            List<Product> productList;
+            if("sled".equals(id)){
+                productList = productService.findAllSled();
+                sendMessage(resp, HttpServletResponse.SC_OK, productList);
+            }
+
+
         }catch (SQLException e ){
             handleSqlError(resp, e);
         }catch (ServiceException e ){

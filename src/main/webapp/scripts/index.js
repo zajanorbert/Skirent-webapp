@@ -171,6 +171,15 @@ function onLoad() {
 
     logoutButtonEl.addEventListener('click', onLogoutButtonClicked);
 
+    const skiButtonEl = document.getElementById('ski');
+    skiButtonEl.addEventListener('click',() => onElementPress(skiButtonEl.getAttribute("id")));
+
+    const snowboardButtonEl = document.getElementById('snowboard');
+    snowboardButtonEl.addEventListener('click',() => onElementPress(snowboardButtonEl.getAttribute("id")));
+
+    const sledButtonEl = document.getElementById('sled');
+    sledButtonEl.addEventListener('click',() => onElementPress(sledButtonEl.getAttribute("id")));
+
     loadProducts();
 }
 

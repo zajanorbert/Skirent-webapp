@@ -11,9 +11,25 @@ function loadProducts() {
     xhr.send();
 }
 
+
+
+function onElementPress(id) {
+
+    const params = new URLSearchParams();
+    params.append('id', id);
+
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', showProducts);
+    xhr.open('POST', 'Sport');
+    xhr.send(params);
+}
+
 function showProducts() {
     productsList = JSON.parse(this.responseText);
     console.log(productsList);
+    while (productsDivEl.hasChildNodes()){
+        productsDivEl.removeChild(productsDivEl.firstChild);
+    }
     for(let i = 0; i < productsList.length; i++){
         const product = productsList[i];
         const productDivEl = document.createElement('div');

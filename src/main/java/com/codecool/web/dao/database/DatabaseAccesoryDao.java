@@ -33,6 +33,11 @@ public class DatabaseAccesoryDao extends AbstractDao implements AccessoryDao {
     }
 
     @Override
+    public List<Product> findAllSled() throws SQLException {
+        return null;
+    }
+
+    @Override
     public List<Product> findAll() throws SQLException {
         return null;
     }

@@ -19,7 +19,7 @@ public class DatabaseProductDao extends AbstractDao implements ProductDao {
         if (element == null) {
             throw new IllegalArgumentException("Element field is empty");
         }
-        String sql = "SELECT item_id, brand, NR, element, amount, price, pic FROM items WHERE element = ?";
+        String sql = "SELECT item_id, brand, NR, element, amount, price, pic FROM storage WHERE element = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setObject(1, element);
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -39,6 +39,26 @@ public class DatabaseProductDao extends AbstractDao implements ProductDao {
         boolean autoCommit = connection.getAutoCommit();
         connection.setAutoCommit(false);
         String sqlStatement = "SELECT * FROM storage";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    storage.add(fetchProduct(resultSet));
+                }
+            }
+        } catch (SQLException e) {
+            connection.rollback();
+        } finally {
+            connection.setAutoCommit(autoCommit);
+        }
+        return storage;
+    }
+
+    @Override
+    public List<Product> findAllSled() throws SQLException {
+        List<Product> storage = new ArrayList<>();
+        boolean autoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(false);
+        String sqlStatement = "select * from storage join storage_wear on storage.item_id = storage_wear.storage_id";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
@@ -78,6 +98,8 @@ public class DatabaseProductDao extends AbstractDao implements ProductDao {
         }
         throw new SQLException("Insert failed");
     }
+
+
 
     private Product fetchProduct(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("item_id");

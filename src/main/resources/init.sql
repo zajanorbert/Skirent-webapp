@@ -40,7 +40,7 @@ create table wear
 (
     item_id integer references storage(item_id),
     wear_id integer not null primary key,
-    size varchar(3)
+    size varchar(5)
 );
 
 create table accessory
@@ -103,15 +103,33 @@ VALUES ('Blizzard', 'FIREBIRD RACE TI+TPX 12 ', 'SKI', 2, 250,
 INSERT INTO storage(brand, NR, element, amount, price, pic)
 VALUES ('Blizzard', 'FIREBIRD SL FIS (FLAT+PLATE)', 'SKI', 4, 250,
         'https://www.blizzardsports.com/files/7290/c-fit-w-2032-q-auto-eco8A801200001_FIREBIRD-SL-FIS-_FLAT_PLATE_.png');
+INSERT INTO storage(brand, NR, element, amount, price, pic)
+VALUES ('Head', 'Various Boa MIPS', 'HELMET', 3, 120, 'https://cdn-mdb.head.com/CDN/D/324149/1/1300.jpg');
+INSERT INTO storage(brand, NR, element, amount, price, pic)
+VALUES ('Head', 'RADAR', 'HELMET', 2, 120, 'https://cdn-mdb.head.com/CDN/D/323409/1/1300.jpg');
+INSERT INTO storage(brand, NR, element, amount, price, pic)
+VALUES ('Head', 'Rita', 'HELMET', 5, 95, 'https://cdn-mdb.head.com/CDN/D/323709/1/1300.jpg');
 INSERT INTO accessory(accessory_id, length, flex_index)
 values (1, 150, 13);
 INSERT INTO accessory(accessory_id, length, flex_index)
 values (2, 148, 11);
 INSERT INTO accessory(accessory_id, length, flex_index)
 values (3, 156, 13);
+INSERT INTO wear(wear_id, size)
+VALUES (1, 'M/L');
+INSERT INTO wear(wear_id, size)
+VALUES (2, 'XS/S');
+INSERT INTO wear(wear_id, size)
+VALUES (3, 'XL');
 INSERT INTO storage_accessory(storage_id, accessory)
 values (1, 1);
 INSERT INTO storage_accessory(storage_id, accessory)
 values (2, 2);
 INSERT INTO storage_accessory(storage_id, accessory)
 values (3, 3);
+INSERT INTO storage_wear(storage_id, wear_id)
+values (4, 1);
+INSERT INTO storage_wear(storage_id, wear_id)
+values (5, 2);
+INSERT INTO storage_wear(storage_id, wear_id)
+values (6, 3);
